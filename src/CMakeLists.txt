@@ -1,9 +1,8 @@
-# SPDX-License-Identifier: LicenseRef-iENSO-proprietary
-# Copyright (c) 2023 iENSO Inc.
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(nlohmann_json REQUIRED)
+
 
 set (CMAKE_CXX_STANDARD 20)
 

@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: LicenseRef-iENSO-proprietary
-# Copyright (c) 2023 iENSO Inc.
-
 set(TESTS ${PROJECT_NAME}-test)
 
 find_package(GTest REQUIRED)
