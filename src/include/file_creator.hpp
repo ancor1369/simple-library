@@ -19,6 +19,7 @@ public:
 
     void create_file(nlohmann::json& json_object, std::string& file_name);
     nlohmann::json read_file(std::string& file_name);
+    //other
 
 private:
     std::string m_file_path;
