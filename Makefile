@@ -1,20 +1,16 @@
-CC=g++
-
-CFLAGS=-Isrc/include
+CXXFLAGS=-Isrc/include
 
 .PHONY: clean all
 
 OBJS= \
-	main.o \
-	file_creator.o
+     build/main.o \
+     build/file_creator.o
 
 all: $(OBJS)
-	$(CC) -o simple-library $(OBJS)
+	$(CXX) -o build/simple-library $(OBJS)
 
-%.o:src/%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+build/%.o:src/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf *.o
-	rm -rf simple-library
-
+	rm -rf build/*
