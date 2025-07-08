@@ -9,7 +9,7 @@ OBJS= \
 	file_creator.o
 
 all: $(OBJS)
-	$(CC) -o build/simple-library $(OBJS)
+	$(CC) -o simple-library $(OBJS)
 
 %.o:src/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
