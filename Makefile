@@ -8,3 +8,6 @@ main.o: src/main.cpp
 
 file_creator.o: src/file_creator.cpp
 	$(CC) -c src/file_creator.cpp -I src/include/
+
+clean:
+	rm file_creator.o main.o my_program
