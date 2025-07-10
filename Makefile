@@ -1,4 +1,4 @@
-CC=g++
+# CC="g++"
 
 all: main.o file_creator.o
 	$(CC) -o my_program main.o file_creator.o 
