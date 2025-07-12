@@ -9,4 +9,4 @@ file_creator.o: src/file_creator.cpp
 	$(CXX) -c src/file_creator.cpp -I src/include
 
 clean:
-	rm main.o file_creator.o simple-library
+	rm -f main.o file_creator.o simple-library
