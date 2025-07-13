@@ -1,11 +1,18 @@
-all: main.o file_creator.o
-	$(CXX) -o simple-library main.o file_creator.o 
+CXX = g++
+CXXFLAGS = -Wall -O2 -Isrc/include
 
-main.o: src/main.cpp
-	$(CXX) -c src/main.cpp
+all: build/simple-library
 
-file_creator.o: src/file_creator.cpp
-	$(CXX) -c src/file_creator.cpp -I src/include/
+build/simple-library: build/main.o build/file_creator.o
+	$(CXX) -o $@ $^
+
+build/main.o: src/main.cpp
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+build/file_creator.o: src/file_creator.cpp
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf file_creator.o main.o simple-library
+	rm -rf build
