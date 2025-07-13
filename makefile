@@ -1,14 +1,16 @@
 CXX := g++
-CXXFLAGS := -std=c++11 -Iinclude
+CXXFLAGS := -std=c++20 -Iinclude
+BIN_DIR := build
 
-all: simple-library simple-library-test
+all: $(BIN_DIR)/simple-library $(BIN_DIR)/simple-library-test
 
-simple-library: src/main.cpp src/file_creator.cpp
-	$(CXX) $(CXXFLAGS) -o simple-library src/main.cpp src/file_creator.cpp
+$(BIN_DIR)/simple-library: src/main.cpp src/file_creator.cpp
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ src/main.cpp src/file_creator.cpp
 
-simple-library-test: tests/file_creator_test.cpp src/file_creator.cpp
-	$(CXX) $(CXXFLAGS) -o simple-library-test tests/file_creator_test.cpp src/file_creator.cpp -lgtest -lgtest_main -pthread
+$(BIN_DIR)/simple-library-test: tests/file_creator_test.cpp src/file_creator.cpp
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ tests/file_creator_test.cpp src/file_creator.cpp -lgtest -lgtest_main -pthread
 
 clean:
-	rm -f simple-library simple-library-test
-
+	rm -rf $(BIN_DIR)
