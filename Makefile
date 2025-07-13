@@ -1,23 +1,12 @@
-CXX = g++
-CXXFLAGS = -Wall -O2 -Isrc/include
-LDFLAGS =
 
-SRC_DIR = src
-BUILD_DIR = build
+all: main.o file_creator.o
+	$(CXX) -o my_program main.o file_creator.o 
 
-TARGET_APP = $(BUILD_DIR)/simple-library
+main.o: src/main.cpp
+	$(CXX) -c src/main.cpp
 
-SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
-SRC_OBJS = $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(notdir $(SRC_FILES)))
-
-all: $(TARGET_APP)
-
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-$(TARGET_APP): $(SRC_OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+file_creator.o: src/file_creator.cpp
+	$(CXX) -c src/file_creator.cpp -I src/include/
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf file_creator.o main.o my_program
